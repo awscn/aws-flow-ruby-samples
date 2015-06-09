@@ -1,10 +1,6 @@
 AWS Flow Framework for Ruby Samples and Recipes
 ===============================================
 
-**本项目主要为原始项目增加一些中文的文档,在例子代码中会补充一些中文注释**
-
-关于示例程序的中文说明请参见[README_cn](README_cn.md)
-
 This project contains sample code and recipes for the AWS Flow Framework
 for Ruby.
 
@@ -51,76 +47,65 @@ in the *AWS Flow Framework for Ruby Developer Guide*.
 
 #### booking
 
-The *Booking* sample demonstrates a
-[synchronization](http://docs.aws.amazon.com/amazonswf/latest/awsrbflowguide/programming-workflow-patterns.html#programming-workflow-patterns-synchronization)
-workflow pattern. It waits for two activities to complete: a car
-reservation and airline reservation. When both activities complete, it
-sends a confirmation. All activities are performed asynchronously.
+The *Booking* 例子演示了一个
+[同步](http://docs.aws.amazon.com/amazonswf/latest/awsrbflowguide/programming-workflow-patterns.html#programming-workflow-patterns-synchronization)
+工作流模式. 该示例会等待两个活动完成: a car
+reservation 和 airline reservation. 当两个活动都完成时, 再发送一个确认(confirmation).
+所有的活动都是异步方式执行的.
 
 Code + info: [samples/booking](samples/booking/)
 
 #### cron
 
-The *Cron* sample runs an activity periodically based on a cron
-expression.
+The *Cron* sample 基于一个计划安排的表达式周期性的运行工作流活动.
 
 Code + info: [samples/cron](samples/cron/)
 
 #### cron\_with\_retry
 
-The *CronWithRetry* sample demonstrates how to run a scheduled task with
-`exponential_retry` options. Once the workflow is
-complete, `continue_as_new` is used to re-run the
-workflow at the next scheduled time.
+The *CronWithRetry* 例子演示如何在运行一个已调度任务(scheduled task)时使用`exponential_retry` 选项.
+一旦工作流完成, `continue_as_new` 选项使得工作流在下一个调度周期中重新运行.
 
 Code + info: [samples/cron\_with\_retry](samples/cron_with_retry/)
 
 #### deployment
 
-The *Deployment* sample illustrates the deployment of a set of
-application components through a workflow. A YAML configuration file is
-used to describe the application stack. The workflow takes this
-description as input and simulates the deployment of the components
-specified in it.
+The *Deployment*  例子演示了一个完整工作流的各个应用组件的部署方式.
+一个 YAML 配置文件描述了应用程序栈结构. 示例中的工作流使用这个描述文件
+作为输入,模拟了文件中表述的部署过程.
 
 Code + info: [samples/deployment](samples/deployment/)
 
 #### file\_processing
 
-The *FileProcessing* sample demonstrates a media processing use case.
-The workflow downloads a file from an Amazon S3 bucket, creates a
-`.zip` file and then uploads the file back to Amazon
-S3. The task routing feature in Amazon SWF is illustrated in this
-sample.
+The *FileProcessing* 例子演示了一个媒体处理案例.
+示例中的工作流从 Amazon S3 桶中下载文件,创建一个`.zip` 文件并且回传到S3.
+这个例子主要演示了 Amazon SWF 的任务路由(task routing)特性. 
 
 Code + info: [samples/file\_processing](samples/file_processing/)
 
 #### hello\_world
 
-The *HelloWorld* sample uses a very simple workflow that calls an
-activity to print Hello World. It shows basic usage of the framework,
-including implementing activities and workflow coordination logic and
-building workers to run the workflow and activities.
+The *HelloWorld* 例子实现了一个非常简单的工作流,它掉用一个活动打印出 " Hello World".
+这个例子演示了 swf framework 的基本用法.包括实现工作流和活动的协作逻辑,
+以及创建工作执行器(Workers)来运行工作流和活动.
 
 Code + info: [samples/hello\_world](samples/hello_world/)
 
 #### periodic
 
-The *Periodic* sample periodically executes an activity in a
-long-running workflow. The ability to continue executions as new
-executions so that an execution can run for very extended periods of
-time is demonstrated.
+The *Periodic* 例子实现了一个长时间运行的工作流,它会周期性的执行一个活动.
+工作流设计上可以把一次工作流执行作为一次新的执行重新开始,这种方式实现如何在一个非常长的时间中运行任务.
 
 Code + info: [samples/periodic](samples/periodic/)
 
 #### split\_merge
 
-The *SplitMerge* sample demonstrates a [parallel
+The *SplitMerge* 例子演示你 [并行分隔 parallel
 split](http://docs.aws.amazon.com/amazonswf/latest/awsrbflowguide/programming-workflow-patterns.html#programming-workflow-patterns-synchronization)
-followed by a [simple
+然后 [简单合并 simple
 merge](http://docs.aws.amazon.com/amazonswf/latest/awsrbflowguide/programming-workflow-patterns.html#programming-workflow-patterns-simple-merge)
-workflow pattern. It spawns a number of worker activities which are then
-merged using `wait_for_all`.
+的工作流模式. 它同时启动多个工作流活动然后使用 `wait_for_all` 等待它们全部执行完成.
 
 Code + info: [samples/split\_merge](samples/split_merge/)
 
@@ -128,64 +113,59 @@ Code + info: [samples/split\_merge](samples/split_merge/)
 
 #### branch
 
-The **Branch** code provides a recipe to *execute a
-dynamically-determined number of activities concurrently*.
+
+The **Branch** 代码基提供了一个方案来 *并行执行动态数量的活动* .
 
 Code + info: [recipes/branch](recipes/branch/)
 
 #### child\_workflow
 
-The **ChildWorkflow** code provides a recipe to *start a child workflow
-inside a workflow execution*.
+The **ChildWorkflow** 代码基提供了一个方案来 *在一个工作流执行过程中启动一个子工作流*.
 
 Code + info: [recipes/child\_workflow](recipes/child_workflow/)
 
 #### choice
 
-The **Choice** recipes show how to use a choice to *execute one of
-several activities*, or to *execute multiple activities from a larger
-group*.
+The **Choice** 方案演示了如何使用一个选择器(choice)来 *执行一个或多个活动*,
+或者 *execute multiple activities from a larger group*.
 
 Code + info: [recipes/choice](recipes/choice/)
 
 #### conditional\_loop
 
-The **ConditionalLoop** code provides a recipe to *execute a
-dynamically-determined number of activities concurrently*.
+The **ConditionalLoop** 代码基提供了一个方案来 *并行执行动态数量的活动* .
 
 Code + info: [recipes/conditional\_loop](recipes/conditional_loop/)
 
 #### handle\_error
 
-The **HandleError** code provides recipes to *respond to exceptions in
-asynchronous activities depending on exception type* and to *handle
-exceptions in asynchronous activities and perform cleanup*.
+The **HandleError** 代码基提供了一个方案来 *根据异常的类型来响应异步活动中的异常* 和
+*处理异步活动中的异常并完成清理动作*.
 
 Code + info: [recipes/handle\_error](recipes/handle_error/)
 
 #### human\_task
 
-The **HumanTask** code provides a recipe to *Complete an Activity Task
-Manually*.
+The **HumanTask** 代码基提供了一个方案来 * 手工完成活动*.
 
 Code + info: [recipes/human\_task](recipes/human_task/)
 
 #### pick\_first\_branch
 
-The **PickFirstBranch** code provides a recipe to *execute multiple
-activities concurrently and pick the fastest*.
+The **PickFirstBranch** 代码基提供了一个方案来 to * 并行执行多个活动,然后选择完成最快的那个结果*.
 
 Code + info: [recipes/pick\_first\_branch](recipes/pick_first_branch/)
 
 #### retry\_activity
 
-The **RetryActivity** recipes show how to:
+The **RetryActivity** 方案演示如何:
 
--   apply a retry policy to *all invocations of an activity*
--   specify a retry policy for an *activity client*, a *block of code*,
-    or for a *specific invocation of an activity*
--   retry activities *without jitter*, or with *custom jitter logic*
--   retry activities with *custom retry policies*
+-   应用一个重试策略 to *all invocations of an activity*
+-   指定一个重试策略给 *activity client*, a *block of code*,
+    或者给 a *specific invocation of an activity*
+-   重试活动s *without jitter*, or with *custom jitter logic*
+-   重试活动s with *custom retry policies* 
+
 
 Code + info: [recipes/retry\_activity](recipes/retry_activity/)
 
@@ -194,7 +174,7 @@ Code + info: [recipes/retry\_activity](recipes/retry_activity/)
 The **WaitForSignal** code provides a recipe to *wait for an external
 signal and take a different code path if the signal is received*.
 
-Code + info: [recipes/wait\_for\_signal](recipes/wait_for_signal/)
+The **WaitForSignal** 代码基提供了一个方案来 *等等一个外部信号,并根据收到的信号来选择不同的代码路径*.
 
 For More Information
 --------------------
