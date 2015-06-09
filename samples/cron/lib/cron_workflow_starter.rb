@@ -4,13 +4,12 @@ require_relative 'cron_workflow'
 
 # These are the initial parameters for the Simple Workflow
 
-# @param job [Hash] information about the job that needs to be run. It
-#   contains a cron string, the function to call (in activity.rb), and the
-#   function call's arguments. The jobs should be short lived to avoid creating
-#   a drift in the  scheduling of activities since the workflow will wait for
-#   the job to finish before it continues as new.
-# @param base_time [Time] time to start the cron workflow
-# @param interval_length [Integer] how often to reset history (seconds)
+#
+# @param job [Hash] 记录计划作业 (cron job)运行所需要的信息. 包含
+#   一个corn 时间表达式的字符串, 一个待执行的函数(in activity.rb), 以及函数的调用参数
+# @param base_time [Time] 工作流的开始时间
+# @param interval_length [Integer] 重置历史的频次 (seconds)
+# @return [Array] 计划调用(job)的时间列表
 job = { cron: "* * * * *",  func: :add, args: [3,4]}
 
 base_time = Time.now
