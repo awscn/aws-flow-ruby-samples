@@ -1,4 +1,4 @@
-source "http://www.rubygems.org"
+source "http://ruby.taobao.org"
 
 gem 'parse-cron', '~> 0.1'
 gem 'aws-flow', '~> 2.4.0'
